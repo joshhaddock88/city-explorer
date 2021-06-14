@@ -1,3 +1,38 @@
+# City Explorer
+
+**Author**: Joshua Haddock
+**Version**: 0.0.1
+
+## Overview
+This will be a website which allows the user to type in a city name and have that city's longitude and latitude display, along with a map showing the city.
+
+## Getting Started
+<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
+## Architecture
+Created with React, React-Bootstrap, Axios, Location IQ Geocoding API. 
+
+## Change Log
+
+
+## Credit and Collaborations
+- [Benjamin Ibarra](https://github.com/BeniBarra)
+
+
+## Features Time Log
+
+**Name of feature**: ________________________________
+
+**Estimate of time needed to complete**: _____
+
+**Start time**: _____
+
+**Finish time**: _____
+
+**Actual time needed to complete**: _____
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
