@@ -18,6 +18,16 @@ Created with React, React-Bootstrap, Axios, Location IQ Geocoding API.
 ## Credit and Collaborations
 - [Benjamin Ibarra](https://github.com/BeniBarra)
 
+## Data Flow and WireFrame
+
+Wireframe
+
+![Wireframe](./src/images/city-explorer-wireframe.png)
+
+Data-Flow
+
+![Data-Flow](./src/images/city-explorer-data-flow.jpeg)
+
 
 ## Features Time Log
 
