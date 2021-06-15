@@ -17,6 +17,8 @@ class Main extends React.Component {
       lon: '0',
       lat: '0',
       mapURL: '',
+      items: [],
+      errorMessage: ''
     };
   }
 
@@ -29,9 +31,12 @@ class Main extends React.Component {
   handleSubmitForDisplay = async (e) => {
     e.preventDefault();
     // use this.state.city to: get data about the city(lon/lat)
+    try {    
     const key = process.env.REACT_APP_CITY_EXPLORER;
     // ------ Display Data --------
+
     let displayURL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${this.state.city}&format=json`;
+    
 
     const response = await axios.get(displayURL);
 
@@ -57,8 +62,10 @@ class Main extends React.Component {
     console.log("Current map is", mapURL);
 
     this.setState({mapURL})
+    } catch (err) {
+      this.setState({errorMessage: err.message})
+    }
 
-    console.log(cityInformation);
   }
 
   render() {
@@ -71,7 +78,9 @@ class Main extends React.Component {
           lon = {this.state.lon}
           lat = {this.state.lat}
           mapURL = {this.state.mapURL}
+          
         />
+        <h4>{this.state.errorMessage}</h4>
       </>
     )
   };
