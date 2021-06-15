@@ -31,15 +31,15 @@ Data-Flow
 
 ## Features Time Log
 
-**Name of feature**: ________________________________
+**Name of feature**: Asynchronous code, and APIs
 
-**Estimate of time needed to complete**: _____
+**Estimate of time needed to complete**: 5hrs
 
-**Start time**: _____
+**Start time**: 1pm
 
-**Finish time**: _____
+**Finish time**: 7pm
 
-**Actual time needed to complete**: _____
+**Actual time needed to complete**: 6hr
 
 
 
