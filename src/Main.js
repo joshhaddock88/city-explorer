@@ -1,5 +1,6 @@
 //-------------------Imports----------------------
 import axios from 'axios';
+import DisplayInfo from './DisplayInfo'
 import React from 'react';
 import Searchbar from './Searchbar';
 
@@ -11,59 +12,25 @@ class Main extends React.Component {
   
   constructor(props) {
     super(props);
+
     this.state = {
-      city: '',
-      displayName: 'Unknown',
-      lon: '0',
-      lat: '0',
-      mapURL: '',
-      items: [],
-      errorMessage: ''
+      city: {},
+      errorMessage: ``
     };
   }
 
-  handleChange = (e) => {
-    //Capture what user typed
-    //setState
-    this.setState({ city: e.target.value })
-  }
+  getCityData = async (city) => {
+    try {
+      let cityData = await axios.get(`https://us1.locationiq.com/v1/search.php?key=${process.env.REACT_APP_CITY_EXPLORER}&q=${city}&format=json`);
 
-  handleSubmitForDisplay = async (e) => {
-    e.preventDefault();
-    // use this.state.city to: get data about the city(lon/lat)
-    try {    
-    const key = process.env.REACT_APP_CITY_EXPLORER;
-    // ------ Display Data --------
+      this.setState ({
+        city: cityData.data[0]
+      })
 
-    let displayURL = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${this.state.city}&format=json`;
-    
-
-    const response = await axios.get(displayURL);
-
-    const cityInformation = response.data[0];
-
-    // lat, lon, displayName defined
-
-    let displayName = cityInformation.display_name;
-
-    this.setState({displayName})
-
-    let lon = cityInformation.lon;
-    
-    this.setState({lon});
-
-    let lat = cityInformation.lat;
-    
-    this.setState({lat});
-
-    //---------- Map Data ---------
-
-    let mapURL = `https://maps.locationiq.com/v3/staticmap?key=${key}&center=${lat},${lon}&zoom=12`
-    console.log("Current map is", mapURL);
-
-    this.setState({mapURL})
     } catch (err) {
-      this.setState({errorMessage: err.message})
+      this.setState({
+        errorMessage: `${err.message}: ${err.response.data.error}`
+      });
     }
 
   }
@@ -71,16 +38,17 @@ class Main extends React.Component {
   render() {
     return (
       <>
+        <h1>City Explorer</h1>
+        <h2>Choose a city to explore!</h2>
         <Searchbar 
-          handleSubmit = {this.handleSubmitForDisplay}
-          handleChange = {this.handleChange}
-          displayName = {this.state.displayName}
-          lon = {this.state.lon}
-          lat = {this.state.lat}
-          mapURL = {this.state.mapURL}
-          
+          getCityData = {this.getCityData}       
         />
-        <h4>{this.state.errorMessage}</h4>
+        <DisplayInfo 
+          displayName = {this.state.city.display_name}
+          lon = {this.state.city.lon}
+          lat = {this.state.city.lat}
+          errorMessage = {this.state.errorMessage}
+        />
       </>
     )
   };
