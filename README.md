@@ -7,7 +7,7 @@
 This will be a website which allows the user to type in a city name and have that city's longitude and latitude display, along with a map showing the city.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+
 
 ## Architecture
 Created with React, React-Bootstrap, Axios, Location IQ Geocoding API. 
