@@ -20,6 +20,10 @@ Created with React, React-Bootstrap, Axios, Location IQ Geocoding API.
 
 ## Data Flow and WireFrame
 
+Webflow
+
+![Webflow](./src/images/internetFlow.jpeg)
+
 Wireframe
 
 ![Wireframe](./src/images/city-explorer-wireframe.png)
