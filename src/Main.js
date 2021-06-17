@@ -3,6 +3,7 @@ import axios from 'axios';
 import DisplayInfo from './DisplayInfo'
 import React from 'react';
 import Searchbar from './Searchbar';
+import Weather from './Weather';
 
 //-------------Boot Strap Imports-------------
 
@@ -15,7 +16,7 @@ class Main extends React.Component {
 
     this.state = {
       city: {},
-      errorMessage: ``
+      errorMessage: ``,
     };
   }
 
@@ -26,7 +27,13 @@ class Main extends React.Component {
       this.setState ({
         city: cityData.data[0]
       })
+      // now that we have lat/lon, request the weather data
+      let weatherData = await axios.get(`http://localhost:3001/weather?lat=${this.state.city.lat}&lon=${this.state.city.lon}&searchQuery=${this.state.city.display_name.split(',')[0]}`)
 
+      console.log(weatherData);
+      this.setState({
+        weather: weatherData.data
+      });
     } catch (err) {
       this.setState({
         errorMessage: `${err.message}: ${err.response.data.error}`
@@ -49,6 +56,7 @@ class Main extends React.Component {
           lat = {this.state.city.lat}
           errorMessage = {this.state.errorMessage}
         />
+        {this.state.weather ? <Weather weather={this.state.weather} /> : ''}
       </>
     )
   };
