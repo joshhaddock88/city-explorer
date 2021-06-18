@@ -38,7 +38,7 @@ class Main extends React.Component {
       console.log('We get back', response.data)
       console.log('Dispaly name is ', response.data[0].display_name);
 
-      const server = process.env.REACT_APP_SERVER;
+      const server = process.env.REACT_APP_SERVER || 3001;
 
 
       // get weather data from server
