@@ -5,17 +5,17 @@ import Button from 'react-bootstrap/Button';
 class Searchbar extends React.Component {
   onFormSubmit = e => {
     e.preventDefault();
-    this.props.getCityData(e.target.city.value);
+    this.props.handleSubmit(e.target.city.value);
   }
 
   render () {
     return (
-    <>
       <Form onSubmit={this.onFormSubmit}>
-        <input name="city" onChange={this.props.handleChange} />
-        <Button type="submit">Explore!</Button>
+        <Form.Group controlId='citySearch'>
+          <Form.Control type='text'/>
+        </Form.Group>
+        <Button variant='primary' type="submit">Explore!</Button>
       </Form>
-    </>
     )
   }
 }

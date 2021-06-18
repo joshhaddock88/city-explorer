@@ -1,18 +1,23 @@
 import React from 'react';
+import Card from 'react-bootstrap/Card';
 
 class Weather extends React.Component {
+  
   render() {
+    let forecasts = [];
+    try {
+      forecasts = this.props.weather.map((forecast, idx) => <Card.Text key={idx}>Date: {forecast.date}: {forecast.description}</Card.Text>);
+    } catch {
+      forecasts = <Card.Text>Data unavailable</Card.Text>
+    }
     return (
-      <>
-        <h3>Weather</h3>
-        {this.props.weather.map(weather => <>
-            <h3>{weather.date}</h3>
-            <p>{weather.description}</p>
-          </>
-          )}
-      </>
-    )
-  }
+      <Card>
+        <Card.Header as='h2'>Local Weather</Card.Header>
+        <Card.Body>
+          {forecasts}
+        </Card.Body>
+      </Card>
+    );}
 }
 
 export default Weather;
