@@ -38,13 +38,14 @@ class Main extends React.Component {
       console.log('We get back', response.data)
       console.log('Dispaly name is ', response.data[0].display_name);
 
-      const server = process.env.REACT_APP_SERVER || 3001;
+      const server = process.env.REACT_APP_SERVER;
 
 
       // get weather data from server
       let weatherQuery = await axios.get(`${server}/weather?lat=${response.data[0].lat}&lon=${response.data[0].lon}`);
       console.log(weatherQuery);
-      const weather = await axios.get(weatherQuery)
+      const weather = weatherQuery
+      console.log(weather.data);
 
       // get movie data from server
       let movieQuery = `${server}/movies?city=${e.target.citySearch.value}`;
