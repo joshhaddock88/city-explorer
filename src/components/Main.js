@@ -36,7 +36,7 @@ class Main extends React.Component {
       console.log('Our query is', query);
       const response = await axios.get(query);
       console.log('We get back', response.data)
-      console.log('Dispaly name is ', response.data[0].display_name);
+      console.log('Display name is ', response.data[0].display_name);
 
       const server = process.env.REACT_APP_SERVER;
 
