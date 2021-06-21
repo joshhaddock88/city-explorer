@@ -21,10 +21,8 @@ class DisplayInfo extends React.Component {
             lon = {this.props.lon}
           />
         </Jumbotron> : ''}
-        {this.props.weather ? 
-          <Weather weather={this.props.weather} /> : ''}
-        {this.props.movies ? 
-          <Movies movies={this.props.movies} /> : ''}
+        {this.props.weather ? <Weather weather={this.props.weather} /> : ''}
+        {this.props.movies ? <Movies movies={this.props.movies} /> : ''}
       </>
     )
   }
